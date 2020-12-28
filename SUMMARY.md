@@ -4,11 +4,12 @@
 
 ## Code Formatter
 
-* [Pourquoi Prettier à raison ?](code-formatter/pourquoi-prettier-a-raison.md)
+* [Pourquoi Prettier à raison ?](code-formatter/prettier.md)
 
 ## Linter
 
 * [Linter](linter/linter.md)
+* [ESLint](linter/eslint.md)
 
 ---
 
