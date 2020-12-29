@@ -4,7 +4,11 @@
 
 ## Code Formatter
 
-* [Pourquoi Prettier à raison ?](code-formatter/prettier.md)
+* [Code formatter](code-formatter/code-formatter.md)
+* [Prettier](code-formatter/prettier.md)
+* [Pourquoi Prettier à raison ?](code-formatter/pourquoi-prettier-a-raison.md)
+* [Beautify](code-formatter/beautify.md)
+* [Prérequis et automatisation du formatage](code-formatter/prerequis-et-automatisation-du-formatage.md)
 
 ## Linter
 
