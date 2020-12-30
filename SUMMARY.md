@@ -9,6 +9,7 @@
 * [Pourquoi Prettier à raison ?](code-formatter/pourquoi-prettier-a-raison.md)
 * [Beautify](code-formatter/beautify.md)
 * [Prérequis et automatisation du formatage](code-formatter/prerequis-et-automatisation-du-formatage.md)
+* [Sources](code-formatter/sources.md)
 
 ## Linter
 

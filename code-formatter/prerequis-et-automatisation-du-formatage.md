@@ -4,7 +4,7 @@
 
 Il y a différents prérequis \(**évident**\) à mettre en place et à respecter pour qu'un outil de formatage de code fasse sa tache correctement. Cela passe par l'explication de l'utilité du formatage de code et par l'automatisation de l'installation, ainsi que l'intégration du formatage dans le processus \(workflow\) de publication du code.
 
-### 1er : Tous le monde doit l'installer. 
+### Tous le monde doit l'installer. 
 
 Pour cela, une installation manuel avec un tuto OU une installation automatique.
 
@@ -16,7 +16,7 @@ Tous ca pour dire, il faut penser à comment installé l'outil de la façon la p
 
 Attention, un effet de bord de certaine manière d'installer l'outil est que tous le monde ai l'outil mais dans des versions différentes.
 
-### 2nd : Tous le monde doit l'utiliser
+### Tous le monde doit l'utiliser
 
 Si l'outil de formatage est installé mais qu'il n'est pas utilisé, ca ne sert a rien, tous le code n'est pas entièrement formaté de manière cohérente.
 
@@ -29,7 +29,7 @@ Les raisons de la non utilisation peuvent être :
 
 Il faut avoir un minimum de documentation pour expliquer l'intérêt du formatage de code pour le projet et comment utiliser l'outil.
 
-## 3eme : La configuration
+## La configuration
 
 Je vois deux types de configuration :
 
@@ -40,27 +40,33 @@ Je vois deux types de configuration :
 
 Il faut avoir un fichier de configuration versionné au sein du projet, afin que la configuration de l'outil soit commune, et partagé entre tous les dev de la façon la plus simple.
 
+Nb : il me semble utile de mettre en place une vérification manuel qui installe pour vérifier que l'outil fonctionne en utilisant la configuration du fichier.
+
+### Automatiser le formatage de code
+
+#### Configurer l'IDE pour formater à la sauvegarde
+
+Il faut pour chaque développeur \(pour tous l'IDE, ou pour le workspace du projet\)
+
+* Configurer l'IDE pour utiliser par défaut le plugin de formatage.
+* Configurer l'IDE pour appliquer un 'formatage à la sauvegarde' des fichiers.
+
+#### Configurer un hook de pre-commit
+
+Git dispose d’un moyen de lancer des scripts personnalisés quand certaines actions importantes ont lieu. Ce sont les hook. Il existe cependant des outils pour simplifié l'exécution d'outils lors de hook.   
+En voici 2 : lint-staged et husky
+
+{% embed url="https://github.com/okonet/lint-staged" %}
+
+{% embed url="https://github.com/typicode/husky" %}
+
+Voici un exemple avec Prettier : 
+
+{% embed url="https://prettier.io/docs/en/precommit.html" %}
 
 
-En revanche, il me semble utile de mettre en place une vérification manuel par la personne qui installe pour vérifier que l'outil fonctionne en utilisant la configuration du fichier.
 
-## Automatiser le formatage de code
-
-
-
-config de l'IDE : prettier peux être installé dans l'ide et configurer, et utiliser 'formatage a la sauvegarde', ave le plugin dans l'ide
-
-fichier est modifié et que les modifications sont enregistrées automatiquement ou manuellement.
-
-formater a la sauvegarde des fichiers.
-
-
-
-formater au pre-commit
-
-
-
-a un autre moment avant le partage du code
+NB : Déterminer le moment ou l'on souhaite que le formatage soit appliqué, avant le commit, n'est pas forcement le mieux pour certaine équipe qui ont leur habitude. Avoir du code formaté, avant qu'il soit partagé, reste selon moi le meilleur moment pour un gage de qualité. Il ne reste qu'a s'efforcer de trouver une solution la plus automatisé possible pour réaliser l'action de formatage convenu.
 
 
 
