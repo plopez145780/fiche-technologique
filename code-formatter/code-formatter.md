@@ -38,3 +38,5 @@ On trouve sur le marché d'extension de VS Code différent plugins pour tous les
 
 Par exemple, il y a Prettier et BeautifyJs de très connue.
 
+
+

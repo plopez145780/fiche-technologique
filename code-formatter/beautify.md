@@ -1,12 +1,14 @@
 # Beautify
 
-Beautify est l'outil par défaut dans VS Code.
+Beautify est un autre outils de formatage de code.
 
-
-
-Plugin de 
+## Plugin VS Code
 
 {% embed url="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify" %}
+
+## Basé sur js-beautify
+
+{% embed url="https://github.com/beautify-web/js-beautify" %}
 
 
 
