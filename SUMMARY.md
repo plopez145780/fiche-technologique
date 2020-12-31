@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Initial page](README.md)
+* [EditorConfig](editorconfig.md)
 
 ## Code Formatter
 
