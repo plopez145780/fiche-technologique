@@ -20,12 +20,12 @@
 ---
 
 * [angular](angular.md)
-* [CSS](CSS.md)
+* [CSS](css.md)
 * [cucumber](cucumber.md)
-* [javaScript](javaScript.md)
+* [javaScript](javascript.md)
 * [kafka](kafka.md)
 * [microservice](microservice.md)
-* [RxJS](RxJS.md)
+* [RxJS](rxjs.md)
 * [technologie](technologie.md)
-* [Versioning-BDD-Flyway](Versioning-BDD-Flyway.md)
+* [Versioning-BDD-Flyway](versioning-bdd-flyway.md)
 
