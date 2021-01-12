@@ -8,8 +8,6 @@ Un des outils de formatage de code les plus téléchargé et multi langage est P
 
 Prettier est un outil de formatage de code prenant en charge beaucoup de langages : JavaScript / JSX / **Angular** / Vue / Flow / **TypeScript** / **CSS**, Less, and SCSS / **HTML** / **JSON** / GraphQL / **Markdown**, including GFM and MDX / YAML. Les développeurs de Prettier ont donc cherché des consensus sur les règles de formatage pour créer une cohérence dans le formatage.
 
-
-
 ### Comment voir si vous utilisez bien Prettier ?
 
 Dans VScode, lorsque vous ouvré un fichier compatible avec Prettier. En bas à droite de la fenêtre, vous devez avoir un texte : "Prettier : ✔" Ce qui signifie que Prettier est le formateur pour se type de fichier.
