@@ -40,3 +40,9 @@ Par exemple, il y a Prettier et BeautifyJs de très connue.
 
 
 
+{% embed url="https://www.nova-technology.fr/2019/09/27/editorconfig-prettier-et-eslint-sur-vs-code/" %}
+
+
+
+
+
