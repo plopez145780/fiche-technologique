@@ -34,3 +34,11 @@
 * [Emmet](emmet.md)
 * [Outils de construction](outils-de-construction.md)
 
+## Git
+
+* [Conseils de survie](git/conseils-de-survie.md)
+* [Reflog](git/reflog.md)
+* [Rebase](git/rebase.md)
+* [Merge](git/merge.md)
+* [Merge VS Rebase](git/merge-vs-rebase.md)
+
