@@ -37,6 +37,10 @@ git merge master
 
 commit de merge donne du context, vous pouvez mieux voir à quel moment des changements apportés au dépôt upstream ont été intégrés à la branche de fonctionnalité.
 
+-Le rebase est une méthode courante pour intégrer les changements en amont dans votre dépôt local. L'intégration des changements en amont avec git merge génère un commit de merge superflu dès que vous voulez voir comment le projet a évolué.
+
+
+
 ### Rebase
 
 ```text

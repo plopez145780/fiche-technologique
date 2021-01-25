@@ -40,6 +40,8 @@
 * [Conseils de survie](git/conseils-de-survie.md)
 * [Reflog](git/reflog.md)
 * [Merge-base](git/merge-base.md)
+* [git log](git/git-log.md)
+* [Bisect](git/bisect.md)
 * [Rebase](git/rebase.md)
 * [Merge](git/merge.md)
 * [Merge VS Rebase](git/merge-vs-rebase.md)

@@ -10,7 +10,19 @@ Comme son nom l'indique, **rebase** est là pour changer la « base » d'une bra
 
 Pour cela, il faut réecrire l'historique de commit de git.
 
-## Fonctionnement
+## Cas d'utilisation
+
+Je vois deux grands cas d'utilisation de rebase.
+
+### Mettre son développement à la suite de master
+
+C'est à dire prendre toutes les modifications qui ont été validées sur sa branche et les rejouer en repartant de master. De cette façon, le code de developpement commence à partir d'un master mis à jour.
+
+Variante : prendre toutes les modifications qui ont été validées sur une branche et les rejouer sur une autre.
+
+`git rebase origin/master`
+
+#### Fonctionnement
 
 1. git recherche de l’ancêtre commun le plus récent des deux branches. \(exemple : master et feature1\)
 2. git récupére toutes les différences introduites par chaque _commit_ de la branche courante \(feature1\)
@@ -20,79 +32,71 @@ Pour cela, il faut réecrire l'historique de commit de git.
 
 Résultat les commits de feature1 sont à la suite de tous les comits de master.
 
-## Cas d'utilisation
 
-Je vois deux grands cas d'utilisation de rebase :
 
-### Mettre son développement à la suite de master
+#### Pourquoi utiliser le rebase "manuel"
 
-C'est a dire prendre toutes les modifications qui ont été validées sur sa branche et les rejouer en repartant de master. Comme ça, le code de developpement commence à partir d'un master mis à jour.
+Cela évite les surprises plus tard au moment de la fusion avec master. La gestion des conflits est géré en local au moment du rebase, et non pas à distance.
 
-#### Pourquoi 
+Cela permet d'avoir un joli historique, c'est à dire un historique linéaire et simple à relire \(important lorsqu'on a vraiment besoin de lire l'historique\)
 
-pour régler les conflits au plus tot, c'est a dire au moment du rebase sur sa branche local
+### Réorganiser ces commits avant push
 
-Cela évite les surprise plus tard au moment de la fusion avec master. La gestion des conflits est géré en local, pas à distance.
+Réorganiser les commits créer lors de son développement avant de les partager avec l'équipe permet de nettoyer un historique désordonné avant de fusionner sa branche dans master.
 
-pour que notre code part de master et ainsi pour regé les conflits au plus tot et evité les surprise plus tard
-
-pour avoir un jolie historique, c'est a dire un historique linéaire et simple a relire \(lorsqu'on a vraiment besoin de lire l'historique\)
+ rebase interactif : `git rebase -i <nouvelle-base>`
 
 
 
+### rebase -i
 
+Le drapeau -i permet de déclencher un rebase interactif. Ce mode nous permet de guider git dans son _rebase_ et de lui dire comment organiser les nouveaux commits.
 
+```text
+git rebase -i <nouvelle-base>
+```
 
+Cette commande va ouvrir un éditeur nous permettant de dire à git comment réorganiser les différents commit à partir de la nouvelle base
 
-vous pouvez prendre toutes les modifications qui ont été validées sur une branche et les rejouer sur une autre.
+* **pick**, permet d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit
+* **reword**, permet d'inclure le commit tout en ayant la possibiliter de changer le message
+* **edit**, permet d'éditer le commit. En séparant en plusieurs commits par exemple
+* **squash**, regroupement de plusieurs commits. Combine le commit avec le commit du dessus et permet de changer le message du commit
+* **fixup**, comme **squash** mais utilisera le message du commit situé au dessus
+* **exec**, permet de lancer des commandes shell sur le commit
 
-#### Pourquoi 
+il en manque ???
 
-pour que notre code part de master et ainsi pour regé les conflits au plus tot et evité les surprise plus tard
+## Rebase avancé "--onto"
 
-pour avoir un jolie historique, c'est a dire un historique linéaire et simple a relire \(lorsqu'on a vraiment besoin de lire l'historique\)
+L'option --onto permet de spécifié  2 branches pour recupérer les commits supplémentaire entre les 2, pour les appliquer sur une 3eme branche.
 
+### Exemple
 
+`git rebase --onto master serveur client`
 
+Cela signifie "Extraire la branche client, déterminer les commits depuis l’ancêtre commun des branches `client` et `serveur` puis les rejouer sur `master` "
 
+## Les dangers du rebase
 
-Reorganiser les commit créer lors de sont developpement avant de les partager avec l'equipe.
+Ne jamais rebaser l'historique public, réécrit l'historique de git s'il a été partagé car les commit existant sont supprimé et de nouveaux sont créé. Cela va créer des conflits pour les autres utisateurs ou supprimer le travail d'autre personne.
 
- le rebase interactif est utilisé pour nettoyer un historique désordonné avant de merger branche de fonctionnalité dans `master`.
+JAMAIS DE REBASE DE MASTER
 
+Le rebase est à faire que si l'on est seul sur la branche. Cela oblige d'écraser et donc détruire l'ancien historique distant à chaque push. `git push --force`
 
+## En cas de panique
 
-Un “squash” est un regroupement de plusieurs commits. Le but est de les fusionner en un seul pour avoir un historique Git plus propre. Il est notamment conseillé de le faire dans le cadre des Pull Request pour simplifier la relecture des modifications effectuées.
+Annuler le rebase et revenir a l'état avant le debut du rebase : `git rebase --abort`
 
+J'ai finit le rebase et ce n'est pas bon, tous est cassé !
 
+Grace à reflog vous pouvez retrouver le hash du commit avant le rebase et retirer une branche
 
-donner une base au rebase
-
-
-
-pick
-
-
-
-cherry-pick
-
-
-
-danger du rebase
-
-Toute reecriture de l'historique de git 
-
-oblige d'ecrasé et donc detruire d'ancien historique
-
-git push --force
-
-a faire que si l'on est seul sur la branche \(ne pas faire si il y a une partage\)
-
- **Ne rebasez jamais des** _**commits**_ **qui ont déjà été poussés sur un dépôt public.**
-
-
-
-
+```text
+git reflog
+git checkout -b nouvelle_branche hash_commit
+```
 
 ## Sources
 
