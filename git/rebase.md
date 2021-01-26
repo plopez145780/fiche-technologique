@@ -20,7 +20,9 @@ C'est à dire prendre toutes les modifications qui ont été validées sur sa br
 
 Variante : prendre toutes les modifications qui ont été validées sur une branche et les rejouer sur une autre.
 
-`git rebase origin/master`
+Mettre a jour sa branche avec la branche master distante : `git rebase origin/master`
+
+\("origin/master" est la reférence vers le master distant de gitlab\)
 
 #### Fonctionnement
 
@@ -31,8 +33,6 @@ Variante : prendre toutes les modifications qui ont été validées sur une bran
 5. git réapplique les sauvegardes dans le même ordre.
 
 Résultat les commits de feature1 sont à la suite de tous les comits de master.
-
-
 
 #### Pourquoi utiliser le rebase "manuel"
 
@@ -46,17 +46,7 @@ Réorganiser les commits créer lors de son développement avant de les partager
 
  rebase interactif : `git rebase -i <nouvelle-base>`
 
-
-
-### rebase -i
-
-Le drapeau -i permet de déclencher un rebase interactif. Ce mode nous permet de guider git dans son _rebase_ et de lui dire comment organiser les nouveaux commits.
-
-```text
-git rebase -i <nouvelle-base>
-```
-
-Cette commande va ouvrir un éditeur nous permettant de dire à git comment réorganiser les différents commit à partir de la nouvelle base
+Le mode interractif permet de spécifier à git comment organiser les nouveaux commits.
 
 * **pick**, permet d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit
 * **reword**, permet d'inclure le commit tout en ayant la possibiliter de changer le message
@@ -64,8 +54,21 @@ Cette commande va ouvrir un éditeur nous permettant de dire à git comment réo
 * **squash**, regroupement de plusieurs commits. Combine le commit avec le commit du dessus et permet de changer le message du commit
 * **fixup**, comme **squash** mais utilisera le message du commit situé au dessus
 * **exec**, permet de lancer des commandes shell sur le commit
+* **break**, pause \(un 'git rebase --continue' est nécessaire pour continuer\)
+* **drop**, supprime le commit
+* **label**  = label current HEAD with a name
+* **reset**  = reset HEAD to a label
+* **merge** \[-C  \| -c \]  \[\# \] . create a merge commit using the original merge commit's . message \(or the oneline, if no original merge commit was . specified\). Use -c  to reword the commit message.
 
-il en manque ???
+Les lignes peuvent être réordonnées \(exécutés de haut en bas\)
+
+Si une ligne est supprimé ou mise en commentaire, le commit ne sera pas réappliqué et donc il sera perdu.
+
+
+
+
+
+
 
 ## Rebase avancé "--onto"
 
