@@ -54,21 +54,15 @@ Le mode interractif permet de spécifier à git comment organiser les nouveaux c
 * **squash**, regroupement de plusieurs commits. Combine le commit avec le commit du dessus et permet de changer le message du commit
 * **fixup**, comme **squash** mais utilisera le message du commit situé au dessus
 * **exec**, permet de lancer des commandes shell sur le commit
-* **break**, pause \(un 'git rebase --continue' est nécessaire pour continuer\)
+* **break**, pause a placer entre 2 lignes \(un 'git rebase --continue' est nécessaire pour continuer\)
 * **drop**, supprime le commit
-* **label**  = label current HEAD with a name
-* **reset**  = reset HEAD to a label
-* **merge** \[-C  \| -c \]  \[\# \] . create a merge commit using the original merge commit's . message \(or the oneline, if no original merge commit was . specified\). Use -c  to reword the commit message.
+* **label,** crée un label sur le HEAD courant, pour le temps du rebase \(ex: label un\_nom\)
+* **reset,** réinitialise le HEAD sur un label \(équivaut a un reset --hard\)
+* **merge,** crée un commit de fusion en utilisant le commit de fusion d'origine. \(ex: merge -C a1b2c3 branch-name\)
 
 Les lignes peuvent être réordonnées \(exécutés de haut en bas\)
 
 Si une ligne est supprimé ou mise en commentaire, le commit ne sera pas réappliqué et donc il sera perdu.
-
-
-
-
-
-
 
 ## Rebase avancé "--onto"
 
@@ -78,7 +72,7 @@ L'option --onto permet de spécifié  2 branches pour recupérer les commits sup
 
 `git rebase --onto master serveur client`
 
-Cela signifie "Extraire la branche client, déterminer les commits depuis l’ancêtre commun des branches `client` et `serveur` puis les rejouer sur `master` "
+Cela signifie : Extraire la branche client, déterminer les commits depuis l’ancêtre commun des branches `client` et `serveur` puis les rejouer sur `master`
 
 ## Les dangers du rebase
 
@@ -90,15 +84,17 @@ Le rebase est à faire que si l'on est seul sur la branche. Cela oblige d'écras
 
 ## En cas de panique
 
-Annuler le rebase et revenir a l'état avant le debut du rebase : `git rebase --abort`
-
-J'ai finit le rebase et ce n'est pas bon, tous est cassé !
-
-Grace à reflog vous pouvez retrouver le hash du commit avant le rebase et retirer une branche
+* Annuler le rebase et revenir à l'état avant le début du rebase : `git rebase --abort`
+* J'ai finit le rebase et ce n'est pas bon, tous est cassé ! Grace à `reflog` vous pouvez retrouver le hash du commit avant le rebase, et ainsi revenir en arrière.
 
 ```text
 git reflog
-git checkout -b nouvelle_branche hash_commit
+git checkout -b nouvelle_branche hash_commit_avant_rebase
+
+OU
+
+git reflog
+git reset --hard hash_commit_avant_rebase
 ```
 
 ## Sources
