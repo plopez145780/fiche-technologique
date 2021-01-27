@@ -10,11 +10,7 @@ Comme son nom l'indique, **rebase** est là pour changer la « base » d'une bra
 
 Pour cela, il faut réecrire l'historique de commit de git.
 
-## Cas d'utilisation
-
-Je vois deux grands cas d'utilisation de rebase.
-
-### Mettre son développement à la suite de master
+## Mettre son développement à la suite de master
 
 C'est à dire prendre toutes les modifications qui ont été validées sur sa branche et les rejouer en repartant de master. De cette façon, le code de developpement commence à partir d'un master mis à jour.
 
@@ -26,13 +22,17 @@ Mettre a jour sa branche avec la branche master distante : `git rebase origin/ma
 
 #### Fonctionnement
 
-1. git recherche de l’ancêtre commun le plus récent des deux branches. \(exemple : master et feature1\)
-2. git récupére toutes les différences introduites par chaque _commit_ de la branche courante \(feature1\)
+![](../.gitbook/assets/image%20%284%29.png)
+
+1. git recherche de l’ancêtre commun le plus récent des deux branches. \(exemple : master et feature\)
+2. git récupére toutes les différences introduites par chaque _commit_ de la branche courante \(feature\)
 3. git sauvegarde les différences dans des fichiers temporaires
 4. git réinitialise la branche courante sur le même _commit_ que la branche de destination \(master\)
 5. git réapplique les sauvegardes dans le même ordre.
 
-Résultat les commits de feature1 sont à la suite de tous les comits de master.
+Résultat les commits de feature \(en vert\) sont à la suite de tous les commits de master \(en bleu\).
+
+![](../.gitbook/assets/image%20%283%29.png)
 
 #### Pourquoi utiliser le rebase "manuel"
 
@@ -40,7 +40,13 @@ Cela évite les surprises plus tard au moment de la fusion avec master. La gesti
 
 Cela permet d'avoir un joli historique, c'est à dire un historique linéaire et simple à relire \(important lorsqu'on a vraiment besoin de lire l'historique\)
 
-### Réorganiser ces commits avant push
+
+
+En réalisant un rebase avant un merge, vous effectuerez à coup sûr un fast-forward merge, et votre historique sera parfaitement linéaire. Par ailleurs, cette opération vous permet d'écraser tout commit de suivi ajouté lors d'une pull request.
+
+
+
+## Réorganiser ces commits avant push
 
 Réorganiser les commits créer lors de son développement avant de les partager avec l'équipe permet de nettoyer un historique désordonné avant de fusionner sa branche dans master.
 
@@ -60,15 +66,14 @@ Le mode interractif permet de spécifier à git comment organiser les nouveaux c
 * **reset,** réinitialise le HEAD sur un label \(équivaut a un reset --hard\)
 * **merge,** crée un commit de fusion en utilisant le commit de fusion d'origine. \(ex: merge -C a1b2c3 branch-name\)
 
-Les lignes peuvent être réordonnées \(exécutés de haut en bas\)
 
-Si une ligne est supprimé ou mise en commentaire, le commit ne sera pas réappliqué et donc il sera perdu.
+
+* Les lignes peuvent être réordonnées \(exécutés de haut en bas\)
+* Si une ligne est supprimé ou mise en commentaire, le commit ne sera pas réappliqué et donc il sera perdu.
 
 ## Rebase avancé "--onto"
 
 L'option --onto permet de spécifié  2 branches pour recupérer les commits supplémentaire entre les 2, pour les appliquer sur une 3eme branche.
-
-### Exemple
 
 `git rebase --onto master serveur client`
 
@@ -76,16 +81,19 @@ Cela signifie : Extraire la branche client, déterminer les commits depuis l’a
 
 ## Les dangers du rebase
 
-Ne jamais rebaser l'historique public, réécrit l'historique de git s'il a été partagé car les commit existant sont supprimé et de nouveaux sont créé. Cela va créer des conflits pour les autres utisateurs ou supprimer le travail d'autre personne.
+* Ne jamais réécrit l'historique de master.
+* Ne jamais réécrit l'historique de git s'il a été partagé. Le rebase est à faire que si l'on est seul sur la branche. Les commit existant sont supprimé et de nouveaux sont créé.  Cela va créer des conflits pour les autres utisateurs ou supprimer le travail d'autre personne.
+*  Dans le cadre de la revue de code, ne pas utiliser le rebase après avoir créé une pull request. 
+* Il est obligatoire d'écraser et donc détruire l'ancien historique ce sa branche distante à chaque push : `git push --force`
 
-JAMAIS DE REBASE DE MASTER
 
-Le rebase est à faire que si l'on est seul sur la branche. Cela oblige d'écraser et donc détruire l'ancien historique distant à chaque push. `git push --force`
+
+![](../.gitbook/assets/image.png)
 
 ## En cas de panique
 
 * Annuler le rebase et revenir à l'état avant le début du rebase : `git rebase --abort`
-* J'ai finit le rebase et ce n'est pas bon, tous est cassé ! Grace à `reflog` vous pouvez retrouver le hash du commit avant le rebase, et ainsi revenir en arrière.
+* J'ai finit le rebase et ce n'est pas bon, tous est cassé !  Grace à `reflog` vous pouvez retrouver le hash du commit avant le rebase, et ainsi revenir en arrière.
 
 ```text
 git reflog
@@ -95,6 +103,15 @@ OU
 
 git reflog
 git reset --hard hash_commit_avant_rebase
+```
+
+* Si vous avez quand même peur de perdre votre travail, vous pouvez faire une branche pour votre rebase.
+
+```text
+# Rebase master dans feature-duplique
+git checkout feature 
+git checkout -b feature-duplique
+git rebase master
 ```
 
 ## Sources

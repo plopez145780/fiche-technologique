@@ -1,14 +1,12 @@
+---
+description: 'Deux méthodes, un même résultat'
+---
+
 # Merge VS Rebase
 
-Il n’y a pas de différence entre les résultats des deux types d’intégration, mais rebaser rend l’historique plus clair.
+Il n’y a pas de différence entre le code final entre les deux type d'intégration : merge et rebase.
 
-
-
- Il faut noter que l’instantané pointé par le _commit_ final, qu’il soit le dernier des _commits_ d’une opération de rebasage ou le _commit_ final issu d’une fusion, sont en fait le même instantané — c’est juste que l’historique est différent.
-
- Rebaser rejoue les modifications d’une ligne de _commits_ sur une autre dans l’ordre d’apparition, alors que la fusion joint et fusionne les deux têtes.
-
-## 
+La différence est dans l'historique des commits de git. Le commit final sera soit le dernier des commits d’une opération de rebasage, soit le commit d’une fusion.
 
 ## Situation 
 
@@ -27,6 +25,7 @@ Tous les autres cas de figure relèvent du `rebase` sous toutes ses formes : cla
 ### Merge
 
 ```text
+# Crée un commit 
 git checkout feature
 git merge master
 ```
@@ -44,27 +43,27 @@ commit de merge donne du context, vous pouvez mieux voir à quel moment des chan
 ### Rebase
 
 ```text
+# Rebase master au debut de la branche feature
 git checkout feature
 git rebase master
+# Merge en fast-forward de feature dans master
+git checkout master
+git merge feature
 ```
 
--- reecrit l'histoirque \(\)
+- Réécrit l'historique.  
+- Demande de respecter des règles strictes à cause de la réecriture de l'historique.  
++ Pas de commit supplémentaire \(commit de merge\)  
++ Les commits de la branches en cours de développement sont toujours à fin \(facilite le fast-forward\).  
++ L'historique est linéaire / "plus propre" / plus lisible.
 
-+ les commits de la branches sont tjrs a fin \(facilite le fast-forward\)
+## Conclusion : Rebaser ou Fusionner
 
-+ historique linéaire, plus propre, plus lisible
-
-+ pas de commit supplementaire \(commit de merge\)
-
--- respecter des regles strictes a cause de la reecriture de l'historique
-
-
+De manière générale, la manière de profiter au mieux des deux mondes consiste à **rebaser des modifications locales** que vous avez effectuées mais qui n’ont pas encore été partagées avant de les pousser de manière à obtenir un historique propre mais sans jamais rebaser quoi que ce soit que vous ayez déjà poussé quelque part.
 
 
 
-#### Rebaser ou Fusionner <a id="_rebaser_ou_fusionner"></a>
-
-De manière générale, la manière de profiter au mieux des deux mondes consiste à rebaser des modifications locales que vous avez effectuées mais qui n’ont pas encore été partagées avant de les pousser de manière à obtenir un historique propre mais sans jamais rebaser quoi que ce soit que vous ayez déjà poussé quelque part.
+![](../.gitbook/assets/image%20%282%29.png)
 
 
 
