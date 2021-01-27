@@ -18,6 +18,20 @@
 * [Linter](linter/linter.md)
 * [ESLint](linter/eslint.md)
 
+## Git
+
+* [C'est ce qu'une MR ?](git/cest-ce-quune-mr.md)
+* [Personnalisation](git/personnalisation.md)
+* [Nettoyage](git/nettoyage.md)
+* [Conseils de survie](git/conseils-de-survie.md)
+* [Reflog](git/reflog.md)
+* [Merge-base](git/merge-base.md)
+* [git log](git/git-log.md)
+* [Bisect](git/bisect.md)
+* [Rebase](git/rebase.md)
+* [Merge](git/merge.md)
+* [Merge VS Rebase](git/merge-vs-rebase.md)
+
 ---
 
 * [angular](angular.md)
@@ -33,16 +47,4 @@
 * [Versioning-BDD-Flyway](versioning-bdd-flyway.md)
 * [Emmet](emmet.md)
 * [Outils de construction](outils-de-construction.md)
-* [C'est ce qu'une MR ?](cest-ce-quune-mr.md)
-
-## Git
-
-* [Conseils de survie](git/conseils-de-survie.md)
-* [Reflog](git/reflog.md)
-* [Merge-base](git/merge-base.md)
-* [git log](git/git-log.md)
-* [Bisect](git/bisect.md)
-* [Rebase](git/rebase.md)
-* [Merge](git/merge.md)
-* [Merge VS Rebase](git/merge-vs-rebase.md)
 
