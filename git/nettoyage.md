@@ -1,6 +1,8 @@
 # Nettoyage
 
+## Supprimer ses branches locales mergées autre que master
 
+git branch --merged \| grep -v -e master \| xargs git branch -d
 
 
 
