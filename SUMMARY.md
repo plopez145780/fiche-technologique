@@ -21,6 +21,7 @@
 ## Git
 
 * [C'est ce qu'une MR ?](git/cest-ce-quune-mr.md)
+* [Divers](git/divers.md)
 * [Personnalisation](git/personnalisation.md)
 * [Nettoyage](git/nettoyage.md)
 * [Conseils de survie](git/conseils-de-survie.md)
