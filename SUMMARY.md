@@ -20,6 +20,7 @@
 
 ## Git
 
+* [gpom](git/gpom.md)
 * [C'est ce qu'une MR ?](git/cest-ce-quune-mr.md)
 * [Divers](git/divers.md)
 * [Personnalisation](git/personnalisation.md)
