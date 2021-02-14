@@ -8,6 +8,8 @@ description: 'https://dependabot.com'
 
 Dependabot a été créé en 2017 et racheter par Github en 2019. C'est un service gratuit dont le but est d'aider à mettre à jour les dépendances de projet.
 
+Il est passé sur une application github.
+
 ## Pourquoi utiliser dependabot ?
 
 Faire les taches est une tache secondaire, par rapport a la creation \(de valeur ajouté\)
@@ -124,7 +126,11 @@ avoir un fichier dependabot.yml \(fichier de conf\)
 
 {% embed url="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/" %}
 
-{% embed url="https://docs.github.com/en/github/administering-a-repository/about-dependabot-version-updates" %}
+{% embed url="https://docs.github.com/en/github/administering-a-repository/keeping-your-dependencies-updated-automatically" %}
+
+
+
+{% embed url="https://dependabot.com/blog/" %}
 
 
 
