@@ -51,4 +51,5 @@
 * [Outils de construction](outils-de-construction.md)
 * [Dependabot](dependabot.md)
 * [Flyway](flyway.md)
+* [npm](npm.md)
 
