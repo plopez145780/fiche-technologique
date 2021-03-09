@@ -50,7 +50,7 @@
 * [Emmet](emmet.md)
 * [Outils de construction](outils-de-construction.md)
 * [Dependabot](dependabot.md)
-* [Untitled](untitled.md)
+* [Dependabot 2](untitled.md)
 * [Flyway](flyway.md)
 * [npm](npm.md)
 

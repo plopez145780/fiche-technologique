@@ -1,4 +1,4 @@
-# Untitled
+# Dependabot 2
 
 ## À propos des mises à jour de version de Dependabot 
 
@@ -27,8 +27,6 @@ Si vous avez activé les mises à jour de sécurité, vous verrez parfois des de
 Vous pouvez configurer les mises à jour de version pour les référentiels qui contiennent un manifeste de dépendance ou un fichier de verrouillage pour l'un des gestionnaires de packages pris en charge. Pour certains gestionnaires de packages, vous pouvez également configurer la commercialisation des dépendances. Pour plus d'informations, consultez «Options de configuration pour les mises à jour des dépendances».
 
 ## Activation et désactivation des mises à jour de version
-
-......
 
 Vous pouvez configurer votre référentiel afin que Dependabot mette à jour automatiquement les packages que vous utilisez.
 
@@ -114,6 +112,28 @@ Si des gestionnaires de packages sont manquants, consultez le fichier de configu
 ## Options de configuration pour les mises à jour des dépendances
 
 ....
+
+
+
+## Gestion des pull requests pour les mises à jour des dépendances
+
+Vous gérez les demandes d'extraction générées par Dependabot de la même manière que les autres demandes d'extraction, mais il existe des options supplémentaires.
+
+Remarque: les mises à jour de version de Dependabot sont actuellement en version bêta et sujettes à modification. Pour utiliser la fonctionnalité bêta, archivez un fichier de configuration pour indiquer à Dependabot les dépendances à maintenir pour vous. Pour plus de détails, consultez «Activation et désactivation des mises à jour de version».
+
+À propos des demandes d'extraction Dependabot Dependabot génère des pull requests pour mettre à jour les dépendances. En fonction de la configuration de votre référentiel, Dependabot peut générer des pull requests pour les mises à jour de version et / ou pour les mises à jour de sécurité. Vous gérez ces demandes d'extraction de la même manière que toute autre demande d'extraction, mais certaines commandes supplémentaires sont également disponibles. Pour plus d'informations sur l'activation des mises à jour des dépendances de Dependabot, consultez «Configuration des mises à jour de sécurité de Dependabot» et «Activation et désactivation des mises à jour de version».
+
+Lorsque Dependabot déclenche une pull request, vous êtes averti par la méthode choisie pour le référentiel. Chaque pull request contient des informations détaillées sur la modification proposée, extraites du gestionnaire de packages. Ces demandes d'extraction suivent les vérifications et tests normaux définis dans votre référentiel. De plus, là où suffisamment d'informations sont disponibles, vous verrez un score de compatibilité. Cela peut également vous aider à décider de fusionner ou non la modification. Pour plus d'informations sur ce score, consultez «À propos des mises à jour de sécurité de Dependabot».
+
+Si vous avez de nombreuses dépendances à gérer, vous souhaiterez peut-être personnaliser la configuration de chaque gestionnaire de packages afin que les demandes d'extraction aient des réviseurs, des destinataires et des étiquettes spécifiques. Pour plus d'informations, voir «Personnalisation des mises à jour des dépendances».
+
+Affichage des demandes d'extraction Dependabot Sur GitHub, accédez à la page principale du référentiel. Sous le nom de votre référentiel, cliquez sur Pull requests. Sélection de l'onglet Problèmes et demandes d'extraction
+
+Toutes les demandes d'extraction pour les mises à jour de sécurité et de version sont faciles à identifier. L'auteur est dependabot, le compte bot utilisé par Dependabot. Par défaut, ils ont l'étiquette de dépendances. Modification de la stratégie de rebase pour les demandes d'extraction Dependabot Par défaut, Dependabot rebase automatiquement les demandes d'extraction pour résoudre les conflits. Si vous préférez gérer manuellement les conflits de fusion, vous pouvez le désactiver à l'aide de l'option rebase-strategy. Pour plus de détails, consultez «Options de configuration pour les mises à jour des dépendances».
+
+Gestion des demandes d'extraction Dependabot avec des commandes de commentaire Dependabot répond à des commandes simples dans les commentaires. Chaque demande d'extraction contient des détails sur les commandes que vous pouvez utiliser pour traiter la demande d'extraction, par exemple: pour fusionner, écraser, rouvrir, fermer ou rebaser la demande d'extraction. L'objectif est de vous faciliter au maximum le tri de ces pull requests générées automatiquement.
+
+Si vous exécutez l'une des commandes pour ignorer les dépendances ou les versions, Dependabot stocke les préférences pour le référentiel de manière centralisée. Bien qu'il s'agisse d'une solution rapide, pour les référentiels avec plus d'un contributeur, il est préférable de définir explicitement les dépendances et les versions à ignorer dans le fichier de configuration. Cela permet à tous les contributeurs de voir facilement pourquoi une dépendance particulière n'est pas mise à jour automatiquement. Pour plus d'informations, consultez «Options de configuration pour les mises à jour des dépendances».
 
 
 
