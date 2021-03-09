@@ -132,5 +132,7 @@ avoir un fichier dependabot.yml \(fichier de conf\)
 
 {% embed url="https://dependabot.com/blog/" %}
 
+{% embed url="https://medium.com/@jb.leduigou/utiliser-un-bot-afin-de-mettre-à-jour-automatiquement-les-dépendances-80232caae749" %}
+
 
 
