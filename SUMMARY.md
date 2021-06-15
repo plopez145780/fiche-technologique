@@ -73,3 +73,12 @@
 
 * [Relais](electronique/relais.md)
 
+## DevOps
+
+* [Docker](devops/docker.md)
+* [Kubernetes](devops/kubernetes.md)
+
+## Méthode
+
+* [Software craftsmanship](methode/software-craftsmanship.md)
+
