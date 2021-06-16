@@ -82,3 +82,7 @@
 
 * [Software craftsmanship](methode/software-craftsmanship.md)
 
+---
+
+* [MoSCoW](moscow.md)
+
