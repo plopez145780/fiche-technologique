@@ -86,4 +86,6 @@
 
 * [MoSCoW](moscow.md)
 * [Deno](deno.md)
+* [Outil Dataiku](outil-dataiku.md)
+* [Informatique de gestion](informatique-de-gestion.md)
 
